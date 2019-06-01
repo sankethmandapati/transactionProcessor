@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nextbill-jeff/transactionProcessor.git"
+    "url": "git+https://github.com/Arjun-tp/transactionProcessor.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nextbill-jeff/transactionProcessor/issues"
+    "url": "https://github.com/Arjun-tp/transactionProcessor/issues"
   },
-  "homepage": "https://github.com/nextbill-jeff/transactionProcessor#readme",
+  "homepage": "https://github.com/Arjun-tp/transactionProcessor#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
