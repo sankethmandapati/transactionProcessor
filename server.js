@@ -7,6 +7,7 @@ var cors = require('cors');
 let config    = require('./config/development'); //change db to developmentConsumer
 
 let registerUser = require('./api/registerUser');
+const transaction = require('./api/transaction');
 const bodyParser = require('body-parser');
 let db = config.db;
 
@@ -46,6 +47,7 @@ mongoose.connect(`mongodb://${db.mongo.host}:${db.mongo.port}/${db.mongo.db}`);
 
 
 express.use("/api/registerUser", registerUser);
+express.use('/api/transaction', transaction);
 
 
 

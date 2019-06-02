@@ -9,6 +9,7 @@ const TransactionSchema = new Schema({
     },
     currencyType : {
         type: String,
+        enum: ['etherium', 'bitcoin'],
 		required: true        
 	},
 	sourceUserId: {
