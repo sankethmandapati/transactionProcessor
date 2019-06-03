@@ -41,10 +41,10 @@ const transaction = async (data) => {
             await TransactionModel.updateOne({_id: newTransaction._id}, {$set: {transactionState: "FAILED"}}).exec();
             throw new Error(errorMessage);
         }
-        const sendersUpdatedBalance = (senderDetails[currencyBalanceKey] - amount);
-        const recepientsUpdatedBalance = (recepientDetails[currencyBalanceKey] + amount);
-        await UserModel.updateOne({_id: senderId}, {$set: {[currencyIdKey]: sendersUpdatedBalance}}).exec();
-        await UserModel.updateOne({_id: recepientId}, {$set: {[currencyIdKey]: recepientsUpdatedBalance}}).exec();
+        const sendersUpdatedBalance = (eval(senderDetails[currencyBalanceKey]) - eval(amount));
+        const recepientsUpdatedBalance = (eval(recepientDetails[currencyBalanceKey]) + eval(amount));
+        await UserModel.updateOne({_id: senderId}, {$set: {[currencyBalanceKey]: sendersUpdatedBalance}}).exec();
+        await UserModel.updateOne({_id: recepientId}, {$set: {[currencyBalanceKey]: recepientsUpdatedBalance}}).exec();
         await TransactionModel.updateOne({_id: newTransaction._id}, {$set: {transactionState: "DONE"}}).exec();
         return newTransaction._id;
     } catch(err) {
