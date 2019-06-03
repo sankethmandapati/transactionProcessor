@@ -59,7 +59,7 @@ const authenticate = (req, res, next) => {
         });
     });
 }
-// @route POST api/users/register
+// @route POST api/registerUser/login
 // @desc Register user
 // @access Public
 router.post("/register", async (req, res) => {

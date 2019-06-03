@@ -26,6 +26,7 @@
     "mongoose": "^5.5.12",
     "node-uuid": "^1.4.8",
     "nodemon": "^1.19.1",
-    "p-queue": "^5.0.0"
+    "p-queue": "^5.0.0",
+    "uniqid": "^5.0.3"
   }
 }
