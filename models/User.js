@@ -34,7 +34,7 @@ const UserSchema = new Schema({
         unique: true
     },
     phone : {
-        type : Number,
+        type : String,
         required :true
     },
     location : {
@@ -44,13 +44,15 @@ const UserSchema = new Schema({
 		type: String
 	},
 	bWalletBalance : {
-		type: Number
+        type: Number,
+        default : 0
 	},
 	eWalletId : {
 		type: String
     },
     eWalletBalance : {
-		type: String
+        type: Number,
+        default : 0
 	},
 	maxAmountAllowed : {
 		type: Number,

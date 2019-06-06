@@ -8,7 +8,6 @@ var uniqid = require('uniqid');
 
 const transaction = async (data) => {
     try {
-        console.log("ooooooooooooooooooooooooooooooooooooooooooooooooooooooo",data)
         const {currencyType, amount, senderId, recepientId} = data;
         var newTransaction = new TransactionModel({
             currencyAmount: amount,
@@ -58,8 +57,11 @@ async function enqueueTransactions(data) {
     return queue.add(() => transaction(data));
 }
 
+// @route POST api/transaction
+// @desc Transaction process Api
+// @access Public
+
 router.post("/", async (req, res) => {
-    console.log("***************************", req.body);
     try {
         const result = await enqueueTransactions(req.body);
         res.status(200).json({
@@ -75,5 +77,32 @@ router.post("/", async (req, res) => {
         });
     }
 });
+
+
+
+// @route POST api/transaction/addMoneyToWallet
+// @desc Register user
+// @access Public
+
+router.put("/addMoneyToWallet",(req, res) => {
+    try{
+        UserModel.findOne({_id : req.body.id}).then((userResponse) => {
+            if(req.body.eWalletBalance){
+                UserModel.updateOne({ _id: req.body.id}, { $set: { eWalletBalance: userResponse.eWalletBalance + req.body.eWalletBalance }})
+                .then((response) => {
+                    return res.send({success : true, Result : response})
+                })
+            }else if(req.body.bWalletBalance){
+                UserModel.updateOne({ _id: req.body.id}, { $set: { bWalletBalance: userResponse.bWalletBalance + req.body.bWalletBalance }})
+            .then((response) => {
+                return res.send({success : true, Result : response})
+            })
+            }
+        })
+    }catch(err){
+        return res.send({success : false, Error : err})
+    }
+})
+
 
 module.exports = router;

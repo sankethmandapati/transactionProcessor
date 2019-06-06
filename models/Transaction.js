@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 //Create Schema
 const TransactionSchema = new Schema({
     currencyAmount : {
-        type: String,
+        type: Number,
 		required: true        
     },
     currencyType : {
@@ -25,6 +25,10 @@ const TransactionSchema = new Schema({
     },
     dateProcessed : {
         type: Date
+    },
+    transactionId : {
+        type: String,
+        required : true
     },
     transactionState : {
         type : String,
